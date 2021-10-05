@@ -1,3 +1,3 @@
-FROM frolvlad/alpine-oraclejdk8:slim
-COPY build/lib/calculator-0.0.1-SNAPSHOT.jar app.jar
+FROM openjdk:11-jre
+COPY ./build/libs/calculator-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]

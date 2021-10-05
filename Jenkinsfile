@@ -18,7 +18,7 @@ pipeline {
         }
         stage("Deploy to staging") {
             steps {
-                sh "docker run -d --rm -p 8765:8080 --name calculator ericmacio/calculator"
+                sh "docker run -d --rm -p 8765:3000 --name calculator ericmacio/calculator"
             }
         }
         stage("Acceptance test") {

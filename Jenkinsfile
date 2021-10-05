@@ -8,7 +8,7 @@ pipeline {
         }
         stage("Unit test") {
             steps {
-                echo "None"
+                sh "./gradlew test"
             }
         }
     }

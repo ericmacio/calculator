@@ -3,6 +3,8 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "jacoco"
 
 group = 'com.macio'
 version = '0.0.1-SNAPSHOT'
@@ -15,8 +17,16 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+     implementation 'junit:junit:4.12'
+	testImplementation 'junit:junit:4.12'
 }
 
-test {
-	useJUnitPlatform()
+jacocoTestCoverageVerification {
+     violationRules {
+          rule {
+               limit {
+                    minimum = 0.2
+               }
+          }
+     }
 }

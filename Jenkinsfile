@@ -16,5 +16,21 @@ pipeline {
                 sh "docker build -t ericmacio/calculator ."
             }
         }
+        stage("Deploy to staging") {
+            steps {
+                sh "docker run -d --rm -p 8765:8080 --name calculator ericmacio/calculator"
+            }
+        }
+        stage("Acceptance test") {
+            steps {
+                sleep 15
+                sh "./acceptance_test.sh"
+            }
+        }
+    }
+    post {
+        always {
+            sh "docker stop calculator"
+        }
     }
 }
